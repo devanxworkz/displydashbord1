@@ -1,0 +1,379 @@
+.bg{
+    background: radial-gradient(circle at top, #1B263B, #0D1B2A 70%);
+
+    height: 100%;
+    background-size:cover ;
+    background-position-x : 50px; 
+}
+.header{
+    
+    color:#ffff;
+    font-family: "Roboto";
+    font-weight: bold;
+    /* text-align: center; */
+}
+.clint-discrip{
+    color:#ffff;
+    font-family: "Roboto";
+}
+
+
+
+.model-hover {
+  position: relative;
+  display: inline-block;
+  color: #00f;
+  cursor: pointer;
+}
+
+.tooltip-box {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #222;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  min-width: 200px;
+  z-index: 999;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+}
+
+.tooltip-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tooltip-box li {
+  margin: 4px 0;
+}
+.model-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.model-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.model-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  padding: 10px;
+}
+
+.model-dropdown-content p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.model-dropdown.show .model-dropdown-content {
+  display: block;
+  animation: dropdownFade 0.2s ease-in-out;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.model-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.model-btn {
+  background: none;
+  border: none;
+  color: #f4f8fc;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.model-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  padding: 10px;
+}
+
+.model-dropdown-content p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.model-dropdown.show .model-dropdown-content {
+  display: block;
+  animation: dropdownFade 0.2s ease-in-out;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* index.css */
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Kanit';
+  background-color: #121212;
+  color: #fff;
+}
+
+.bg {
+  min-height: 100vh;
+ background: radial-gradient(circle at top, #1B263B, #0D1B2A 70%);
+
+  padding-bottom: 40px;
+}
+
+/* Header */
+.header {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #ffff;
+  text-shadow: 0 0 8px #2c2c2d88;
+}
+
+/* Vehicle info section */
+.clint-discrip {
+  background: #222;
+  padding: 15px 20px;
+  border-radius: 15px;
+  max-width: 480px;
+  box-shadow: 0 0 15px #007bff44;
+  user-select: none;
+}
+
+.clint-discrip p {
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+/* Dropdown styles */
+.model-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.model-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.model-btn:hover {
+  background-color: #0056b3;
+}
+
+.model-dropdown-content {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background-color: #333;
+  min-width: 220px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  z-index: 1000;
+  color: white;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  user-select: text;
+}
+
+.model-dropdown-content p {
+  margin: 6px 0;
+}
+
+/* Dropdown show/hide */
+.model-dropdown.show .model-dropdown-content {
+  display: block;
+}
+
+/* Input & button styling */
+input[type="datetime-local"] {
+  border-radius: 8px;
+  border: 1px solid #444;
+  padding: 6px 8px;
+  font-size: 1rem;
+  background-color: #1a1a1a;
+  color: white;
+  width: 220px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="datetime-local"]:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 6px #0d6efd88;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #777 !important;
+  cursor: not-allowed;
+}
+
+/* Select dropdown */
+select {
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 1rem;
+  color: white;
+  outline: none;
+  min-width: 220px;
+  transition: border-color 0.3s ease;
+}
+
+select:hover, select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 6px #0d6efd88;
+}
+
+/* Chart title */
+h3 {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* Responsive grid for gauges and cards */
+@media (min-width: 480px) {
+  .gauge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* Individual gauge and text card styles */
+.gauge-card, .text-card {
+  background: #f8f8f8;
+  padding: 14px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  color: #000;
+}
+
+.text-card {
+  background: #fff;
+  user-select: text;
+}
+
+.gauge-card h4, .text-card h4 {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #222;
+}
+
+.gauge-card p, .text-card p {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0;
+}
+
+/* Scrollbar for dropdown content if needed */
+.model-dropdown-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Tooltip styling for recharts */
+.recharts-tooltip-wrapper {
+  z-index: 1100 !important;
+  box-shadow: 0 0 10px #007bff99;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+
+
+.bg {
+  background-color: #121212;
+  min-height: 100vh;
+  padding: 20px;
+  color: white;
+  font-family: 'Roboto';
+}
+
+.clint-discrip p {
+  margin: 5px 0;
+}
+
+.model-dropdown.show .model-dropdown-content {
+  display: block;
+}
+
+.model-dropdown-content {
+  display: none;
+}
+
+.model-btn {
+  font-weight: bold;
+}
+
+.model-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.model-dropdown-content {
+  position: absolute;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  min-width: 220px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
