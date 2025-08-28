@@ -456,3 +456,43 @@
 //     </div>
 //   </div>
 // </div>
+
+
+
+
+
+
+
+
+const MiniTempChart = ({ data, dataKey, label, color }) => {
+  const latestValue = data?.length ? data[data.length - 1][dataKey] : null;
+
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-xs font-semibold text-white/80">{label}</span>
+        <span className="text-sm font-bold text-cyan-300">
+          {latestValue !== null && latestValue !== undefined
+            ? Number(latestValue).toFixed(1)
+            : "N/A"}
+        </span>
+      </div>
+      <ResponsiveContainer width="100%" height={100}>
+        <LineChart data={data}>
+          <XAxis dataKey="time" hide />
+          <YAxis hide domain={["auto", "auto"]} />
+          <Tooltip
+            labelFormatter={(time) => new Date(time).toLocaleTimeString()}
+          />
+          <Line
+            type="monotone"
+            dataKey={dataKey}
+            stroke={color}
+            dot={false}
+            strokeWidth={2}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};

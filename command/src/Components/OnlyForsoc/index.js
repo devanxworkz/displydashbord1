@@ -14,7 +14,7 @@ const arcPath = (cx, cy, r, startDeg, endDeg) => {
   return `M ${start.x} ${start.y} A ${r} ${r} 0 ${largeArc} ${sweepFlag} ${end.x} ${end.y}`;
 };
 
-const SpeedGauge = ({ value = 0, max = 200, width = 260, unit = "", label = "" }) => {
+const OnlyForsoc = ({ value = 0, max = 200, width = 260, unit = "", label = "" }) => {
   const cx = width / 2;
   const cy = width / 2;
   const outerR = 100;
@@ -35,6 +35,7 @@ const SpeedGauge = ({ value = 0, max = 200, width = 260, unit = "", label = "" }
           <stop offset="0%" stopColor="#00F0FF" />
           <stop offset="60%" stopColor="#2AF6E6" />
           <stop offset="100%" stopColor="#00D0FF" />
+          
         </linearGradient>
         <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="4" result="blur" />
@@ -73,7 +74,7 @@ const SpeedGauge = ({ value = 0, max = 200, width = 260, unit = "", label = "" }
         strokeWidth="18"
         strokeLinecap="round"
         fill="none"
-        style={{ filter: "drop-shadow(0 0 6px rgba(0, 240, 255, 0.6))" }}
+        style={{ filter: "drop-shadow(0 0 6px rgba(37, 222, 210, 0.6))" }}
       />
 
       {/* Inner circle
@@ -116,4 +117,4 @@ const SpeedGauge = ({ value = 0, max = 200, width = 260, unit = "", label = "" }
   );
 };
 
-export default SpeedGauge;
+export default OnlyForsoc;
