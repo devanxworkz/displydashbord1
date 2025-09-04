@@ -1,8 +1,23 @@
+
+
+
+
+
 Space control room backdrop
 .bg-space {
   background: radial-gradient(circle at 20% -10%, #1B263B, transparent 40%),
               radial-gradient(circle at 80% -10%, #0EA5E9, transparent 30%),
               linear-gradient(180deg, #0D1B2A 0%, #0A1524 100%);
+}
+.bg-color-container{
+  background: radial-gradient(
+  circle at center,
+  rgba(255, 153, 19, 0.9) 0%,     /* bright orange core */
+  rgba(255, 153, 19, 0.6) 20%,    /* soft orange glow */
+  rgba(30, 30, 30, 0.9) 60%,      /* dark neutral fade */
+  rgba(10, 10, 10, 1) 100%        /* deep black outer */
+);
+
 }
 
 /* Glass surfaces */
@@ -240,5 +255,10 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
   
 }
 
+.bg-full-color{
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #00f0ff 0%, #001133 70%, #000000 100%);
+  color: white;
+}
 
 
