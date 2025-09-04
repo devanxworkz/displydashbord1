@@ -156,7 +156,7 @@ function ThermometerCard({
     <div className="flex flex-col items-center w-[100px]">
       {/* Label + Value */}
       <div className="mb-2 text-center">
-        <p className="text-xs uppercase tracking-wide text-white/60 truncate">
+        <p className="text-xs  tracking-wide text-white/60 truncate">
           {label}
         </p>
         <p className="text-lg font-semibold text-white">{clamped}°C</p>
@@ -304,21 +304,23 @@ const [showMetrics, setShowMetrics] = useState(false); // mobile dropdown toggle
             { key: "speed_kmph", label: "Speed (km/h)", color: "#0ea5e9" },            // Bright blue
           { key: "motortemp", label: "Motor temp (°C)", color: "#facc15" },          // Bright yellow
           { key: "controllermostemp", label: "Controller temp (°C)", color: "#fc6d07ff" },
-          {key : "soc", label:"Soc (%)" , color:"#ffff"},   // Orange
+          {key : "soc", label:"Soc (%)" , color:"#ffff"},  
           {key : "batvoltage", label:"Battery voltage (%)" , color:"#FFF293"},   // Orange
           { key: "ntc1", label: "Positive terminal temp(°C)", color: "#8b5cf6" },                         // Violet
           { key: "ntc2", label: "Cell no 20 temp (°C)", color: "#bf06d4ff" },                         // Cyan
           { key: "ntc3", label: "Cell no 50 temp (°C)", color: "#120befff" },                         // Pinkish red
-          { key: "ntc4", label: "Negative terminal temp(°C)", color: "#10b981" },                           // Light yellow
+          { key: "ntc4", label: "Negative terminal temp(°C)", color: "#10b981" },
+          // {key : "tripkm", label:"Tripkm (km/h)" , color:"#0000"},  
+                           // Light yellow
         ];
 
 
 
 
  const metricOptions1 = [
-            { key: "currentPositive", label: "Current generation (A)", color: "#13ff23" },
-            { key: "currentNegative", label: "Current consumption (A)", color: "#ff0000" },
-            { key: "speed_kmph", label: "Speed (km/h)", color: "#0ea5e9" },            // Bright blue
+          { key: "currentPositive", label: "Current generation (A)", color: "#13ff23" },
+          { key: "currentNegative", label: "Current consumption (A)", color: "#ff0000" },
+          { key: "speed_kmph", label: "Speed (km/h)", color: "#0ea5e9" },            // Bright blue
           { key: "motortemp", label: "Motor temp (°C)", color: "#facc15" },          // Bright yellow
           { key: "controllermostemp", label: "Controller temp (°C)", color: "#fc6d07ff" },
           {key : "soc", label:"Soc (%)" , color:"#ffff"},   // Orange
@@ -326,7 +328,9 @@ const [showMetrics, setShowMetrics] = useState(false); // mobile dropdown toggle
           { key: "ntc1", label: "Positive terminal temp(°C)", color: "#8b5cf6" },                         // Violet
           { key: "ntc2", label: "Cell no 20 temp (°C)", color: "#bf06d4ff" },                         // Cyan
           { key: "ntc3", label: "Cell no 50 temp (°C)", color: "#120befff" },                         // Pinkish red
-          { key: "ntc4", label: "Negative terminal temp(°C)", color: "#10b981" },                           // Light yellow
+          { key: "ntc4", label: "Negative terminal temp(°C)", color: "#10b981" }, 
+            // {key : "tripkm", label:"Tripkm (km/h)" , color:"#0000"},  
+                          // Light yellow
         ];
 
 
@@ -388,6 +392,7 @@ const [showMetrics, setShowMetrics] = useState(false); // mobile dropdown toggle
       controllermostemp: item.controllermostemp,
       batvoltage: item.batvoltage,
       soc: item.soc,
+      
       ntc1: item.ntc?.[0] ?? null,
       ntc2: item.ntc?.[1] ?? null,
       ntc3: item.ntc?.[2] ?? null,
@@ -396,6 +401,7 @@ const [showMetrics, setShowMetrics] = useState(false); // mobile dropdown toggle
       ntc6: item.ntc?.[5] ?? null,
       ntc7: item.ntc?.[6] ?? null,
       ntc8: item.ntc?.[7] ?? null,
+      tripkm: item.tripkm
     }))
   : [];
 
@@ -418,6 +424,7 @@ const processedData1 = historyData.map((item) => {
     ntc6: ntc[5] ?? null,
     ntc7: ntc[6] ?? null,
     ntc8: ntc[7] ?? null,
+    tripkm: item.tripkm
   };
 });
 
@@ -1248,7 +1255,7 @@ useEffect(() => {
 
                     {/* APU */}
                     <div className="rounded-lg bg-[#0d0d0d] border border-white/10 p-2 shadow-md">
-                      <p className="text-xs uppercase text-purple-400 font-Kanit mb-2 text-center">
+                      <p className="text-xs  text-purple-400 font-Kanit mb-2 text-center">
                         APU
                       </p>
                       {apuAbsent ? (
@@ -1540,21 +1547,50 @@ useEffect(() => {
           
           <ReferenceLine y={0} stroke="#FF9913" strokeDasharray="6 3" strokeWidth={1.2} />
 
-          <Tooltip
-            itemStyle={{ fontWeight: 500, color: "#ffffff" }}
-            contentStyle={{
-              backgroundColor: "#000000",
-              border: "1px solid #FF9913",
-              borderRadius: "0.75rem",
-              padding: "6px 10px",
-              fontSize: window.innerWidth < 768 ? "10px" : "11px",
-              boxShadow: "0 0 15px #FF991355",
-            }}
-            formatter={(value, name, props) => {
-              const color = props.color || "#ffffff";
-              return [<span style={{ color, fontWeight: 600 }}>{value}</span>, name];
-            }}
-          />
+         <Tooltip
+  itemStyle={{ fontWeight: 500, color: "#ffffff" }}
+  contentStyle={{
+    backgroundColor: "#000000",
+    border: "1px solid #FF9913",
+    borderRadius: "0.75rem",
+    padding: "6px 10px",
+    fontSize: window.innerWidth < 768 ? "10px" : "11px",
+    boxShadow: "0 0 15px #FF991355",
+  }}
+  formatter={(value, name, props) => {
+    const color = props.color || "#ffffff";
+    return [
+      <span style={{ color, fontWeight: 600 }}>{value}</span>,
+      name,
+    ];
+  }}
+  labelFormatter={(label, payload) => {
+    if (payload && payload.length > 0) {
+      const tripkm = payload[0].payload.tripkm;
+
+      // Format time as YYYY:MM:DD HH:MM:SS
+      const date = new Date(label);
+      const formatted =
+        `${date.getFullYear()}:` +
+        `${String(date.getMonth() + 1).padStart(2, "0")}:` +
+        `${String(date.getDate()).padStart(2, "0")} ` +
+        `${String(date.getHours()).padStart(2, "0")}:` +
+        `${String(date.getMinutes()).padStart(2, "0")}:` +
+        `${String(date.getSeconds()).padStart(2, "0")}`;
+
+      return (
+        <div>
+          <div>{formatted}</div>
+          <div style={{ color: "#FFD700", fontWeight: "bold" }}>
+            Tripkm: {tripkm}
+          </div>
+        </div>
+      );
+    }
+    return label;
+  }}
+/>
+
 
           <Legend
             wrapperStyle={{
@@ -1590,7 +1626,7 @@ useEffect(() => {
     {/* --- 💻 Desktop: Side Metrics Card --- */}
     <div className="hidden md:flex border-l border-[#FF9913]/20 bg-black backdrop-blur-md p-4 flex-col">
       <h3 className="text-sm font-semibold text-white mb-4 tracking-wide border-b border-[#FF9913]/30 pb-1">
-        Select Parameters To Be Shown On Graph.
+        Select parameters to be shown on graph.
       </h3>
 
       <div className="flex flex-col gap-3">
@@ -1672,7 +1708,7 @@ useEffect(() => {
                 hover:bg-[#FF7A00] hover:shadow-[0_0_15px_2px_rgba(255,153,19,0.5)] 
                 transition-all duration-300 ease-in-out"
           >
-            Back to auto time
+            Set default time
           </button>
         )}
       </div>
@@ -1789,23 +1825,49 @@ useEffect(() => {
                       strokeWidth={1.2}
                     />
 
-                    <Tooltip
-                      itemStyle={{ fontWeight: 500 }}
-                      contentStyle={{
-                        backgroundColor: "#0d0d0d",
-                        border: "1px solid #3d3636ff",
-                        borderRadius: "0.75rem",
-                        padding: "6px 10px",
-                        fontSize: window.innerWidth < 768 ? "10px" : "11px",
-                      }}
-                      formatter={(value, name, props) => {
-                        const color = props.color || "#f1f5f9";
-                        return [
-                          <span style={{ color, fontWeight: 600 }}>{value}</span>,
-                          name,
-                        ];
-                      }}
-                    />
+   <Tooltip
+  itemStyle={{ fontWeight: 500, color: "#ffffff" }}
+  contentStyle={{
+    backgroundColor: "#000000",
+    border: "1px solid #FF9913",
+    borderRadius: "0.75rem",
+    padding: "6px 10px",
+    fontSize: window.innerWidth < 768 ? "10px" : "11px",
+    boxShadow: "0 0 15px #FF991355",
+  }}
+  formatter={(value, name, props) => {
+    const color = props.color || "#ffffff";
+    return [
+      <span style={{ color, fontWeight: 600 }}>{value}</span>,
+      name,
+    ];
+  }}
+  labelFormatter={(label, payload) => {
+    if (payload && payload.length > 0) {
+      const tripkm = payload[0].payload.tripkm;
+
+      // Format time as YYYY:MM:DD HH:MM:SS
+      const date = new Date(label);
+      const formatted =
+        `${date.getFullYear()}:` +
+        `${String(date.getMonth() + 1).padStart(2, "0")}:` +
+        `${String(date.getDate()).padStart(2, "0")} ` +
+        `${String(date.getHours()).padStart(2, "0")}:` +
+        `${String(date.getMinutes()).padStart(2, "0")}:` +
+        `${String(date.getSeconds()).padStart(2, "0")}`;
+
+      return (
+        <div>
+          <div>{formatted}</div>
+          <div style={{ color: "#FFD700", fontWeight: "bold" }}>
+            Trip Km: {tripkm}
+          </div>
+        </div>
+      );
+    }
+    return label;
+  }}
+/>
                     <Legend
                       wrapperStyle={{
                         color: "#ffffff",
